@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+mat-grid-tile {
+    background: lightblue;
+    column-span: 1;
+
+    }
+
+span {
+    margin: auto;
+}
+mat-grid-list {
+    width: 100%
+  }
+
+mat-grid-tile-header {
+    height: 20% !important;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+mat-grid-tile-footer {
+height: 20% !important;
+}
