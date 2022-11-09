@@ -1,14 +1,34 @@
-@use '@angular/material' as mat;
+
+mat-toolbar {
+  justify-content: center
+}
 
 mat-grid-tile {
     background: lightblue;
     column-span: 1;
 
-    }
-
-span {
-    margin: auto;
+  }
+  
+#createCard {
+  background: lightgray;
+  column-span: 1;
 }
+
+#createCard:hover {
+  background: lightblue;
+}
+
+#pageTitle {
+    margin:0 auto;
+    flex: auto;
+}
+
+#username {
+  font-size: small;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 mat-grid-list {
     width: 100%
   }

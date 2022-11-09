@@ -311,9 +311,23 @@
     alt="Angular Logo"
     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAbFBMVEX9ggT////+wYL+0KH/8OD+qVP+oUP/+PD/4MH//vz/+/f9hQr+sWL9hw79hAj9kyX+rVr/5cv/6dP+tWv+xYv9jRv+yZL9nTv+xoz+u3f9mjP+2LH/8+f/8OH9kCD+06f+3br9oEH+qlT+vXs089g4AAAERklEQVR4nO2b63aqMBBGiYh3Reu1tsfa8v7veAQUQ/IBAYKRtb79U43dpmGYzATPI4QQQgghhBBCCCGEEEIIIYQQQgghJkSDpWuF+gzEv7Vrh9oMhBCTs2uLmsTSYnrYu/aoRSItxHi7cm1Sg7u0EB8j1yrmZNJC/Fxcy5giSYtZX8KfLC36Ev7y0rc1MndtZIAqLQ6ujQzQpMXRtVI1urTvWqkaXfrDtVI1wViVHrpWMmC5m/VP2vP2h2n/pD0v3PRE+rI9nRaPjNTvRnq/2J229jKavZ8sidkuzTY6kb5fLVPfTrI+j7KY8b2IE+kOpFeL78c3jj8t5AbBUL7w4vu2Kn32JUL4JfInAv3to3yZiCH4RC3O13yI84F0IH8A7w7kTwzUNy8/QuGKf7oZSnzrRHo5UEJ/zPTQNFlfbbUboH3pdW71PWm4Dx19gO+yLH2eYOWYBvvQ8At+k1Xpeygt5Kve0tZyjA6kV5/66lN43BmMeEbN7qQDtPo0vhem04xXhlXp1cFEOebLbLJLnK1JGzvfrE2c13Do1Kr0Gfvh69KkUnFFA69hequ1JA0nenMM8d82kAZxI80G4svTkjS4CNNkLAD3mpmBtDYoy7tugdCStKaWBbc5CIQNpOUMN1x0Iy3fRva+8mZ9aVD4ty6t3rDVm3tNaVhjtCyNUqP1vxbSWu7bgTQsUuXKQpSmNKUpTWlKU/ol0ls0InypNEhm8mUsTRoUK5an3DZKlYb96jbSetqYz7+AtFqsWG2VeoSemoJcsp10fuq0MhaQzhcrfrWdFdoEyFl7+GlB+jl1+p4ikR5pr972qOkIvYpbsN3K9ke3Ld2kgTQoViVTh3ZvSfPzor+cngeBVdykIgA2tulONN48N5GG2/jNEe2T7x19WOCaRcryf7weTyksIQyDtEzRRBr8twuZJmtRW9RlJD/zXFYubSLtgXVYxD2On8xHTNJyhN5lbyk916+3AnaPIaBnAJkeHq2rnWVpXOfR2UiHPUBgQTpSZMt3tCxImxS81cpxWSciZfiXH1FUBW8qXTl1qEaPo0U2ItKamgX9hubS5VOHuyE4Lqf4sOsNOzttpIvbZcV9J3QHjNkUnnUCPbR20njqyjt8v+D6Km2c6N3KltJg6ip7qSv1+qpsUal94dbSamgy6Vrn82eTZmC+A//TXlqeOtPzAc/ry7Tt+rwzpB2BttJZaKpzEmOU/H+G5g3u+6mSx1ratZa+aa+jKKh3MCAM/s61evLLIIrWaVat9J9r/V1HaDHLtVA1WvTpgTQ6sOHaqQL19FEas1xblaOdPkrYVQ90CcyHx2/+WA2Snr370ymoRvH2T11p0n14dkmRbn4675Xkpa9vvzISZOnWJ05fxVPaytne15BJWzpF/RLu0v16uDSR7slzbBnjHj0xmDHu0bOZGZNf1waEEEIIIYQQQgghhBBCCCGEEELIe/AfBJs2Vc9IynIAAAAASUVORK5CYII="
   />
-  <span> 
+
+  <span id="pageTitle"> 
     Status Page
   </span>
+
+  <span id="username">{{userName}}</span>
+  <mat-icon color="white" [matMenuTriggerFor]="menu" id="UserMenuButton">person</mat-icon>
+  <mat-menu #menu="matMenu">
+    
+    <button 
+      *ngFor="let user of userData; let indexOfElement=index;" 
+      mat-menu-item (click)="LoadUser(indexOfElement)">
+      Login As User {{user.principal}}
+    </button>
+
+  </mat-menu>
+
 </mat-toolbar>
 
 
@@ -324,7 +338,6 @@
     <mat-grid-tile 
       *ngFor="let entry of mydata"
       style.background = "lightblue"
-      
     >
       <mat-grid-tile-header>
         {{entry.region.toLocaleUpperCase()}} - {{entry.title}}
@@ -338,6 +351,21 @@
       </mat-grid-tile-footer> 
 
     </mat-grid-tile>
+    <!-- <mat-grid-tile 
+      id="createCard"
+      *ngIf="UserIsAuthorised()"
+      style.background = "yellow"
+    > -->
+    <mat-grid-tile 
+      id="createCard"
+      *ngIf="true"
+      class="hover-class"
+      (click)="openDialog()"
+    >
+
+    <mat-icon [ngStyle]="{'color': 'rgba(0,0,0,.38)', 'transform': 'scale(3)'}"> add </mat-icon>
+    
+  </mat-grid-tile>
 
   </mat-grid-list>
 

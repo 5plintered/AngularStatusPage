@@ -1,0 +1,28 @@
+[{
+    "principal":"wilsonw",
+    "userDetails":{
+        "firstName":"Wilson",
+        "lastName":"Waters",
+        "email":"wilsonw@dug.com"
+    },
+    "authorisation":{
+        "roles":[
+        "ADMIN_IT",
+        "REGION_PERTH",
+        "REGION_HOUSTON"
+        ]
+    }
+},
+{
+    "principal":"hankst",
+    "userDetails":{
+        "firstName":"Tom",
+        "lastName":"Hanks",
+        "email":"hankst@dug.com"
+    },
+    "authorisation":{
+        "roles":[
+        "REGION_HOUSTON"
+        ]
+    }
+}]
