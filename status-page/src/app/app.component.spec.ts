@@ -51,16 +51,19 @@ describe('AppComponent', () => {
   it('should render title', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('status-page app is running!');
+    expect(compiled.querySelector('span#pageTitle')?.textContent).toContain('Status Page');
   });
   
   it('should render status data', () => {
-    app.mydata = data.entries;
+    app.statusTiles = data.entries;
     fixture.detectChanges();
 
     var expectations = [
-      "PERTH - Slurm maintenance",
-      "HOUSTON - Cluster Disruption"
+      "PERTH - Slurm Maintenance",
+      "HOUSTON - Cluster Disruption",
+      "HOUSTON - Webpage Disruption",
+      "PERTH - Service Disruption",
+      "PERTH - Slurm Maintenance"
     ]
 
     const compiled = fixture.nativeElement as HTMLElement;
@@ -71,8 +74,44 @@ describe('AppComponent', () => {
     expect(renderedTitles).toEqual(expectations);
   });
   
+  it('should filter status data', () => {
+    app.statusTiles = data.entries;
+    app.LoadUser(0);
+    fixture.detectChanges();
+
+    var expectations = [
+      "PERTH - Slurm Maintenance",
+      "PERTH - Service Disruption",
+      "PERTH - Slurm Maintenance",
+      "HOUSTON - Cluster Disruption",
+      "HOUSTON - Webpage Disruption",
+    ]
+    
+    var compiled = fixture.nativeElement as HTMLElement;
+    var renderedEntries = Array.from(compiled.querySelectorAll("mat-grid-tile mat-grid-tile-header"));
+    var renderedTitles = renderedEntries.map( entry => { var element = entry as HTMLElement;
+      return element.innerText;
+    })
+    expect(renderedTitles).toEqual(expectations);
+    
+    app.LoadUser(1);
+    fixture.detectChanges();
+
+    var houstonExpectations = [
+      "HOUSTON - Cluster Disruption",
+      "HOUSTON - Webpage Disruption"
+    ]
+    
+    compiled = fixture.nativeElement as HTMLElement;
+    var renderedEntries = Array.from(compiled.querySelectorAll("mat-grid-tile mat-grid-tile-header"));
+    var renderedTitles = renderedEntries.map( entry => { var element = entry as HTMLElement;
+      return element.innerText;
+    })
+    expect(renderedTitles).toEqual(houstonExpectations);
+  });
+  
   it('should render open the login menu on click', () => {
-    app.mydata = data.entries;
+    app.statusTiles = data.entries;
     fixture.detectChanges();
     
     let button = fixture.debugElement.nativeElement.querySelector('#UserMenuButton');
@@ -84,7 +123,7 @@ describe('AppComponent', () => {
   });
   
   it('should show the username when logged in', () => {
-    app.mydata = data.entries;
+    app.statusTiles = data.entries;
     fixture.detectChanges();
     let username = fixture.debugElement.nativeElement.querySelector('#username') as HTMLElement;
     expect(username.textContent).toEqual("Not Logged In");
@@ -94,7 +133,7 @@ describe('AppComponent', () => {
   });
   
   it('should show the create card when admin is logged in', () => {
-    app.mydata = data.entries;
+    app.statusTiles = data.entries;
     fixture.detectChanges();
     let createCard = fixture.debugElement.nativeElement.querySelector('#createCard') as HTMLElement;
     expect(createCard).toBeFalsy();

@@ -2,13 +2,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventFormComponent } from './event-form.component';
 
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+
 describe('EventFormComponent', () => {
   let component: EventFormComponent;
   let fixture: ComponentFixture<EventFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventFormComponent ]
+      declarations: [ EventFormComponent ],
+      providers: [{
+        provide: MatDialogRef,
+        useValue: {}
+      }],
     })
     .compileComponents();
 

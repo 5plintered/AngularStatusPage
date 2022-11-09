@@ -9,8 +9,14 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatGridListModule } from '@angular/material/grid-list'
 import {MatMenuModule} from '@angular/material/menu'
 import {MatIconModule} from '@angular/material/icon'
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, } from '@angular/material/dialog';
 import { EventFormComponent } from './event-form/event-form.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,15 @@ import { EventFormComponent } from './event-form/event-form.component';
     MatGridListModule,
     MatMenuModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    FormsModule,
+    MatNativeDateModule, 
+    MatRippleModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

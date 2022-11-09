@@ -5,9 +5,9 @@
     [
     {
         "id": "1",
-        "region": "perth",
+        "region": "Perth",
         "component": "slurm",
-        "title": "Slurm maintenance",
+        "title": "Slurm Maintenance",
         "description": [
             "<h1>Slurm upgrade<\/h1> You may notice brief inturruptions during this upgrade.", 
             "<h1>Update<\/h1> this maintenence is now complete. Please submit a support ticket if you are still experiencing issues"
@@ -30,6 +30,48 @@
         "endTime" : "2021-06-22T20:00:00.000Z",
         "expectedStartTime" : "2021-06-22T16:30:00.000Z",
         "expectedEndTime" : "2021-06-22T20:00:00.000Z"
+    },
+    {
+        "id": "3",
+        "region": "Houston",
+        "component": "Webpage",
+        "title": "Webpage Disruption",
+        "description": [
+            "<h1>Slurm upgrade<\/h1> You may notice brief inturruptions during this upgrade.", 
+            "<h1>Update<\/h1> this maintenence is now complete. Please submit a support ticket if you are still experiencing issues"
+        ],
+        "startTime" : "2021-06-22T16:30:00.000Z",
+        "endTime" : "2021-06-22T20:00:00.000Z",
+        "expectedStartTime" : "2021-06-22T16:30:00.000Z",
+        "expectedEndTime" : "2021-06-22T20:00:00.000Z"
+    },
+    {
+        "id": "4",
+        "region": "Perth",
+        "component": "Service",
+        "title": "Service Disruption",
+        "description": [
+            "<h1>Slurm upgrade<\/h1> You may notice brief inturruptions during this upgrade.", 
+            "<h1>Update<\/h1> this maintenence is now complete. Please submit a support ticket if you are still experiencing issues"
+        ],
+        "startTime" : "2021-06-22T16:30:00.000Z",
+        "endTime" : "2021-06-22T20:00:00.000Z",
+        "expectedStartTime" : "2021-06-22T16:30:00.000Z",
+        "expectedEndTime" : "2021-06-22T20:00:00.000Z"
+    },
+    {
+        "id": "5",
+        "region": "Perth",
+        "component": "slurm",
+        "title": "Slurm Maintenance",
+        "description": [
+            "<h1>Slurm upgrade<\/h1> You may notice brief inturruptions during this upgrade.", 
+            "<h1>Update<\/h1> this maintenence is now complete. Please submit a support ticket if you are still experiencing issues"
+        ],
+        "startTime" : "2021-06-22T13:45:00.000Z",
+        "endTime" : "2021-06-22T15:00:00.000Z",
+        "expectedStartTime" : "2021-06-22T13:00:00.000Z",
+        "expectedEndTime" : "2021-06-22T15:00:00.000Z"
     }
     ]
 }

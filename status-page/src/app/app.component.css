@@ -8,7 +8,23 @@ mat-grid-tile {
     column-span: 1;
 
   }
-  
+
+.one {
+  background: lightsalmon;
+}
+
+.two {
+  background: lightgoldenrodyellow;
+}
+
+.three {
+  background: lightgreen;
+}
+
+.default {
+  background: lightblue;
+}
+
 #createCard {
   background: lightgray;
   column-span: 1;

@@ -21,21 +21,34 @@ export class User {
 })
 export class AppComponent {
   title = 'status-page';
+  userData = userData;
+  statusTiles = data.entries;
+
+  userName = "Not Logged In"
+  currentUser: any = null;
   
   constructor(public dialog: MatDialog){
     
   }
-  userData = userData;
-  mydata = data.entries;
-
-  userName = "Not Logged In"
-  currentUser: any = null;
-
-  
 
   public LoadUser(userIndex: number = -1) {
     this.currentUser = userIndex == -1 ? null : userData[userIndex];
     this.userName = this.currentUser == null ? "Not Logged In" : `Hello ${userData[userIndex].userDetails.firstName}` ;
+    
+    if(this.currentUser != null) {
+      var roles: string[] = this.currentUser.authorisation.roles;
+      this.statusTiles = [];
+      
+      if(roles.includes("REGION_PERTH")){
+        var perthStatuses = data.entries.filter(entry => entry.region == "Perth");
+        this.statusTiles = this.statusTiles.concat(perthStatuses)
+      }
+      
+      if(roles.includes("REGION_HOUSTON")){
+        var houstonStatuses = data.entries.filter(entry => entry.region == "Houston");
+        this.statusTiles = this.statusTiles.concat(houstonStatuses)
+      }
+    }
   }
 
   public UserIsAuthorised() {
@@ -44,8 +57,25 @@ export class AppComponent {
 
   public openDialog() {
     let dialogRef = this.dialog.open(EventFormComponent, {
-      height: '400px',
-      width: '600px',
+      height: '75%',
+      width: '75%',
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  public getStatusColor(status: string) {
+    switch (status) {
+      case "Cluster Disruption":
+        return "one";
+      case "Slurm Maintenance":
+        return "two";
+      case "Webpage Disruption":
+        return "three";
+      default:
+        return "default";
+    }
   }
 }
